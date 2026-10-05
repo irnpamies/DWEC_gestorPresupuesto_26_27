@@ -95,20 +95,17 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
     function listarGastos() {
         return gastos;    
     }
-
-    //TODO: Función de 1 parámetro que realizará tres tareas: 
-    // o Añadir al objeto gasto pasado como parámetro una propiedad id 
-    // cuyo valor será el valor actual de la variable global idGasto. 
-    // o Incrementar el valor de la variable global idGasto. 
-    // o Añadir el objeto gasto pasado como parámetro a la variable global 
-    // gastos. El gasto se debe añadir al final del array.
+    
     function anyadirGasto(gasto) {
         gasto.id = idGasto;
         idGasto++;
         gastos.push(gasto);
     }
 
-    function borrarGasto() {
+    //TODO: Función de 1 parámetro que eliminará de la variable global gastos el objeto gasto 
+    // cuyo id haya sido pasado como parámetro. Si no existe un gasto con el id 
+    // proporcionado, no hará nada.
+    function borrarGasto(id) {
 
     }
 
