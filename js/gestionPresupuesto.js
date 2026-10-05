@@ -32,6 +32,30 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         this.descripcion = descripcion;
         this.valor = 0;
     }
+
+    let fechaParam = Date.parse(fecha);
+    if (fecha && !isNaN(fechaParam)) {
+        this.fecha = fechaParam;
+    } else {
+        this.fecha = Date.now();
+    }
+
+    this.etiquetas = [];
+    //TODO ¿¿Cómo se implementa esta función??  Función de un número indeterminado de 
+    // parámetros que añadirá las etiquetas pasadas como parámetro a la 
+    // propiedad etiquetas del objeto. Deberá comprobar que no se 
+    // creen duplicados.
+    this.anyadirEtiquetas = function(...etiquetas) {
+        for (let i = 0; i < etiquetas.length; i++) {
+            if (!this.etiquetas.includes(etiquetas[i])) {
+                this.etiquetas.push(etiquetas[i])
+            }
+        }
+    }
+
+    if (etiquetas.length > 0) {
+        this.anyadirEtiquetas(...etiquetas);
+    }     
     
     this.mostrarGasto = function() {
         return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €`
@@ -63,17 +87,7 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         }
     }
 
-    //TODO ¿¿Cómo se implementa esta función??  Función de un número indeterminado de 
-    // parámetros que añadirá las etiquetas pasadas como parámetro a la 
-    // propiedad etiquetas del objeto. Deberá comprobar que no se 
-    // creen duplicados.
-    this.anyadirEtiquetas = function(...etiquetas) {
-        for (let i = 0; i < etiquetas.length; i++) {
-            if (!this.etiquetas.includes(etiquetas[i])) {
-                this.etiquetas.push(etiquetas[i])
-            }
-        }
-    }
+    
 }
 
 
