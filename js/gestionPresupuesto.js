@@ -32,13 +32,6 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         this.descripcion = descripcion;
         this.valor = 0;
     }
-
-    let fechaParam = Date.parse(fecha);
-    if (isNaN.fechaParam) {
-        this.fecha = Date.now;
-    } else {
-        this.fecha = fechaParam;
-    }
     
     this.mostrarGasto = function() {
         return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €`
@@ -54,6 +47,31 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
     this.actualizarValor = function(valor) {
         if (valor >= 0) {
             this.valor = valor;
+        }
+    }
+
+    //TODO: actualizarFecha - Función de 1 parámetro que actualizará la  
+    // propiedad fecha del objeto. Deberá recibir la fecha en formato string 
+    // que sea entendible por la función Date.parse. Si la fecha no es
+    // válida, se dejará sin modificar.
+    this.actualizarFecha = function(fecha) {
+        let fechaParam = Date.parse(fecha);
+        if (isNaN(fechaParam)) {
+            this.fecha = Date.now();
+        } else {
+            this.fecha = fechaParam;
+        }
+    }
+
+    //TODO ¿¿Cómo se implementa esta función??  Función de un número indeterminado de 
+    // parámetros que añadirá las etiquetas pasadas como parámetro a la 
+    // propiedad etiquetas del objeto. Deberá comprobar que no se 
+    // creen duplicados.
+    this.anyadirEtiquetas = function(...etiquetas) {
+        for (let i = 0; i < etiquetas.length; i++) {
+            if (!this.etiquetas.includes(etiquetas[i])) {
+                this.etiquetas.push(etiquetas[i])
+            }
         }
     }
 }
