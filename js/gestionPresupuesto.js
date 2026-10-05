@@ -24,7 +24,7 @@ function mostrarPresupuesto() {
 }
 
 
-function CrearGasto(descripcion, valor, fecha, etiquetas) {    
+function CrearGasto(descripcion, valor, fecha, ...etiquetas) {    
     if (valor >= 0 && typeof valor === "number") {
         this.descripcion = descripcion;
         this.valor = valor;            
@@ -33,6 +33,12 @@ function CrearGasto(descripcion, valor, fecha, etiquetas) {
         this.valor = 0;
     }
 
+    let fechaParam = Date.parse(fecha);
+    if (isNaN.fechaParam) {
+        this.fecha = Date.now;
+    } else {
+        this.fecha = fechaParam;
+    }
     
     this.mostrarGasto = function() {
         return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €`
