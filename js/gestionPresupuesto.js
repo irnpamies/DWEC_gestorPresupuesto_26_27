@@ -24,7 +24,7 @@ function mostrarPresupuesto() {
 }
 
 
-function CrearGasto(descripcion, valor) {    
+function CrearGasto(descripcion, valor, fecha, etiquetas) {    
     if (valor >= 0 && typeof valor === "number") {
         this.descripcion = descripcion;
         this.valor = valor;            
