@@ -125,8 +125,12 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         return total;
     }
 
+    //Función sin parámetros que devuelva el balance (presupuesto - gastos totales) 
+    // disponible. De momento no lo obtendremos por período temporal (lo haremos en 
+    // sucesivas prácticas). Puede utilizar a su vez la función calcularTotalGastos.
     function calcularBalance() {
-        
+        let totalGastos = calcularTotalGastos();
+        return (presupuesto - totalGastos);        
     }
 
 export   {
