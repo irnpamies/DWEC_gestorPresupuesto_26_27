@@ -106,7 +106,10 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
     // cuyo id haya sido pasado como parámetro. Si no existe un gasto con el id 
     // proporcionado, no hará nada.
     function borrarGasto(id) {
-
+        let indice = gastos.findIndex(gasto => gasto.id === id) 
+        if (indice !== -1) {
+            gastos.splice(indice, 1);
+        }
     }
 
     function calcularTotalGastos() {
