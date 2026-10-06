@@ -102,7 +102,7 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         gastos.push(gasto);
     }
 
-    //TODO: Función de 1 parámetro que eliminará de la variable global gastos el objeto gasto 
+    //Función de 1 parámetro que eliminará de la variable global gastos el objeto gasto 
     // cuyo id haya sido pasado como parámetro. Si no existe un gasto con el id 
     // proporcionado, no hará nada.
     function borrarGasto(id) {
@@ -112,8 +112,17 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         }
     }
 
+    //Función sin parámetros que devuelva la suma de todos los gastos creados en la 
+    // variable global gastos. De momento no los agruparemos por período temporal (lo 
+    // haremos en sucesivas prácticas).
     function calcularTotalGastos() {
-
+        let total = 0;
+        if (gastos.length > 0) {
+            for (let gasto of gastos) {
+                total += gasto.valor;
+            }
+        }
+        return total;
     }
 
     function calcularBalance() {
