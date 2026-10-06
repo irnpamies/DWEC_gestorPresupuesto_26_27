@@ -45,12 +45,22 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
     // parámetros que añadirá las etiquetas pasadas como parámetro a la 
     // propiedad etiquetas del objeto. Deberá comprobar que no se 
     // creen duplicados.
-    this.anyadirEtiquetas = function(...etiquetas) {
-        for (let i = 0; i < etiquetas.length; i++) {
-            if (!this.etiquetas.includes(etiquetas[i])) {
-                this.etiquetas.push(etiquetas[i])
+    this.anyadirEtiquetas = function(...etiquetasAAnyadir) {
+        for (let i = 0; i < etiquetasAAnyadir.length; i++) {
+            if (!this.etiquetas.includes(etiquetasAAnyadir[i])) {
+                this.etiquetas.push(etiquetasAAnyadir[i])
             }
         }
+    }
+
+    this.borrarEtiquetas = function(...etiquetasABorrar) {
+        for (let etiqueta of etiquetasABorrar){
+            let indice = this.etiquetas.indexOf(etiqueta);
+            if (indice !== -1) {
+                this.etiquetas.splice(indice, 1);
+            }
+        }
+       
     }
 
     if (etiquetas.length > 0) {
@@ -59,6 +69,19 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
     
     this.mostrarGasto = function() {
         return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €`
+    }
+
+    this.mostrarGastoCompleto = function() {
+        let fechaLocal = new Date(this.fecha).toLocaleString();
+        let texto = `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €.\n`;
+        texto += `Fecha: ${fechaLocal}\n`;
+        texto += `Etiquetas:\n`;
+
+        for (let etiqueta of this.etiquetas) {
+            texto += `- ${etiqueta}\n`;
+        }
+
+        return texto;
     }
 
     
